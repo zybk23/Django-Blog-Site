@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-lg-8">
+        <h3 class="mt-4">{{article.title}}</h3>
+        <hr>
+        <p class="lead">by {{article.author.username}}</p>
+        <hr>
+        <img src="{{article.article_image.url}}" widht=400 height=400 alt="">
+        <hr>
+        <p>{{article.created_date}}</p>
+        <hr>
+        <p class="lead">
+        {{article.content}}</p>
+        <hr>
+    </div>
+</div>
+    
+
+{% endblock body %}

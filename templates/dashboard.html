@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h3>Kontrol Paneli</h3>
+
+<hr>
+<p>
+
+    Hoşgeldiniz, <small>{{request.user.username}}</small>
+</p>
+<hr>
+
+<a class="btn btn-danger" href="/articles/addarticle">Makale Ekle</a>
+<hr>
+
+{% if articles %}
+<table class="table table-dark">
+
+    <thead class="thead-dark">
+        <tr>
+            <th>id</th>
+            <th>Başlık</th>
+            <th>Yazar</th>
+            <th>Tarih</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for article in articles  %}
+            <tr>
+                <td>{{article.id}}</td>
+                <td><a href="/articles/article/{{article.id}}">{{article.title}}</a></td>
+                <td>{{article.author}}</td>
+                <td>{{article.created_date}}</td>
+                <td><a href="/articles/update/{{article.id}}" class="btn btn-danger">Güncelle</a></td>
+                <td><a href="/articles/delete/{{article.id}}" class="btn btn-danger">Sil</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-danger">Makaleniz Bulumuyor</div>
+{% endif %}
+
+
+
+{% endblock body %}

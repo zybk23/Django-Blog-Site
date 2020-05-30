@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h3>Makaleler</h3>
+<hr>
+{% if articles %}
+{% for article in articles  %}
+<div class="row">
+    <div class="col-lg-8">
+        <h3 class="mt-4">{{article.title}}</h3>
+        <hr>
+        <p class="lead">by {{article.author.username}}</p>
+        <hr>
+        <img src="{{article.article_image.url}}" widht=400 height=400 alt="">
+
+        <hr>
+        <p>{{article.created_date}}</p>
+        <hr>
+        <p class="lead">
+        {{article.content}}</p>
+        <hr>
+    </div>
+</div>
+
+{% endfor %}
+{% else %}
+<div class="alert alert-danger">Herhangi Bir makale bulunmuyor...</div>
+{% endif %}
+{% endblock  %}
